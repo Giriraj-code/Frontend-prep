@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState ,useEffect } from "react";
 import "./App.css";
 function Square({ value, onSquareClick }) {
   return (
@@ -59,10 +59,37 @@ export default function Board() {
     }
   }
 
+  // Making reset function to reset the game if there is a winner or match is draw
+  function resetGame(){
+    setElement(Array(9).fill(null));
+    setNext(true);
+  }
+
+  const winners = Winner();
+  const isDraw = !winner && element.every((square) => square != null);
+
+  useEffect(() =>{
+    if(winners){
+      setTimeout(()=>{
+        alert(`Winner is ${winners}`);
+        resetGame();
+      }, 100);
+    }
+  }, [winners]);
+
+  useEffect(()=>{
+    if(isDraw){
+      setTimeout(() =>{
+        alert("Match is Draw");
+        resetGame();
+      }, 100)
+    }
+  }, [isDraw]);
+
   return (
     <>
     <div className="container">
-        <div>Winner is :{status}</div>
+        <div>Winner is :{status}</div> <br/>
       <div className="board-row">
         <Square
           onSquareClick={() => {
