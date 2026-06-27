@@ -59,7 +59,7 @@ export default function Board() {
     }
   }
 
-  // Making reset function to reset the game if there is a winner or match is draw
+  
   function resetGame(){
     setElement(Array(9).fill(null));
     setNext(true);
@@ -71,7 +71,7 @@ export default function Board() {
   useEffect(() =>{
     if(winners){
       setTimeout(()=>{
-        alert(`Winner is ${winners}`);
+        alert(`Winner is : ${winners}`);
         resetGame();
       }, 100);
     }
@@ -81,7 +81,7 @@ export default function Board() {
     if(isDraw){
       setTimeout(() =>{
         alert("Match is Draw");
-        resetGame();
+        resetGame();  
       }, 100)
     }
   }, [isDraw]);
