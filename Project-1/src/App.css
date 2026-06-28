@@ -38,7 +38,7 @@
 
 .square:active{
     transform: translateY(2px) rotate(0.95);
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 2px 4px rgba(198, 190, 190, 0.15);
 }
 .board-row{
     display: flex;
